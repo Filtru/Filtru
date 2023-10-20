@@ -1,0 +1,22 @@
+{
+  "name": "filtru",
+  "version": "1.0.0",
+  "description": "Make your web clean: AI nsfw blocker for your browser.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@bakedpotatolord/nsfwjs": "^0.0.4",
+    "axios": "^1.5.1",
+    "path": "^0.12.7",
+    "random": "^4.1.0"
+  }
+}
