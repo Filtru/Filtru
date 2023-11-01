@@ -1,4 +1,6 @@
 import getRenderUrl from "./getRenderUrl";
+import searchEngineCheck from "./searchEngineCheck";
+import updateStatValue from "./updateStatValue";
 
 export default function checkUrl() {
     chrome.tabs.query({
@@ -12,6 +14,7 @@ export default function checkUrl() {
             domain = domain.hostname;
 
             fetchAndCheck(domain)
+            searchEngineCheck(domain, tab.url)
         } catch (err) {
 
         }
@@ -23,6 +26,8 @@ export default function checkUrl() {
                 var domain = domainName.toString().split('.').reverse().splice(0,2).reverse().join('.')
 
                 if(fetchedList.domains.includes(domain)){
+                    updateStatValue('stat_WebsitesBlocked', 1)
+
                     chrome.tabs.query({ active: true }, function(tabs) {
                         chrome.tabs.update(tabs[0].id, { url: getRenderUrl('website-blocked', `&type=porn&domain=${domainName}`) });
                     });  

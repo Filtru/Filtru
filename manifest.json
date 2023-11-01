@@ -28,11 +28,11 @@
         "<all_urls>"
     ],
     "web_accessible_resources": [{ 
-        "resources": ["renders/youtube_homepage.html", "renders/passwordWeak.html"],
+        "resources": ["src/injectorScript.js"],
         "matches": ["<all_urls>"]
     }],
     "externally_connectable": {
-        "matches": ["https://*.filtru.xyz/*", "http://127.0.0.1:5500/*", "http://localhost:3000/*"]
+        "matches": ["https://filtru.xyz/*", "https://*.filtru.xyz/*", "http://127.0.0.1:5500/*", "http://localhost:3000/*", "<all_urls>"]
     },
     "commands": {
         "_execute_action": {
@@ -41,5 +41,12 @@
                 "mac": "MacCtrl+Command+P"
             }
         }
-    }
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "run_at": "document_start",
+          "js": ["./src/injectorScript.js"]
+        }
+    ]
 }

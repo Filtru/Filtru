@@ -1,9 +1,16 @@
-const path = require('path');
+const path = require('path')
+const url = require('url')
 
 module.exports = {
-  entry: './src/service_worker.js',
-  output: {
-    filename: 'service_worker.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    entry:{
+      injectorScript: './src/injectorScript.js',
+      service_worker: './src/service_worker.js',
+    },
+    devtool: 'inline-source-map',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+    },
+    stats:{
+      errorDetails: false,
+    }
 };
